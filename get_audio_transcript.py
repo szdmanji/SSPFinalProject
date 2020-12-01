@@ -1,26 +1,51 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 from pytube import YouTube
+from pydub import AudioSegment
+from pathlib import Path
 import os
+import sys
+import csv
 
-save_path = r"C:\Users\iannb\OneDrive\Documents\BC Senior Year_\Speech Sig\Term Project\audio_files"
-
+save_path = r"C:\Users\iannb\OneDrive\Documents\BC Senior Year_\Speech Sig\SSPFinalProject\audio_files"
+chunk_save_path =  r"C:\Users\iannb\OneDrive\Documents\BC Senior Year_\Speech Sig\SSPFinalProject\chunked_audio_files"
 gradual_inebriation = ["uo3AXTIPqpg"]
-all_inebriated = ["woDiIAQBCM4", "rQ63wo4XcDs", "yJJRVleE3_Q"]
+video_list = ["woDiIAQBCM4", "rQ63wo4XcDs", "yJJRVleE3_Q"]
+csvname = "AudioDataList.csv"
 
 
 
 def main():
+    all_rows = []
+    fields = ['Chunk Title', 'Text', 'Start Offset', 'End Offset']
     for id in video_list:
         temp_transcript = retrieve_transcript(id)
         nested_transcript_dict, clean_indices = find_longest_segments(temp_transcript)
-        clean_audio_zip = concat_clean_audio(temp_transcript, clean_indices)
-        # title = download_audio(id)
-        # new_title = chop_audio(id, nested_transcript_dict, clean_indices)
+        nested_transcript_dict = nested_transcript_dict[1]
+        # clean_audio_zip = concat_clean_audio(temp_transcript, clean_indices)
+        clean_text_and_offsets = pull_clean_text_and_offsets(id, nested_transcript_dict, clean_indices)
+        title = download_audio(id)
+        rows = download_audio_chunks(clean_text_and_offsets, title)
+        all_rows.extend(rows)
 
+        print("Pulled " + str(len(nested_transcript_dict)) + " audio chunks from the video titled: " + title)
 
-def chop_audio(id, transcipt_dict, index_list):
+    with open(csvname, 'w') as csvfile:
+        # creating a csv writer object
+        csvwriter = csv.writer(csvfile)
 
-    return True
+        # writing the fields
+        csvwriter.writerow(fields)
+
+        # writing the data rows
+        csvwriter.writerows(all_rows)
+
+"""given indicies of 'clean' audio, get corresponding text chunks and time offsets"""
+def pull_clean_text_and_offsets(id, transcipt_dict, index_list):
+    nested_clean_audio_transcripts = []
+    for i in index_list:
+        offsets = [transcipt_dict[i]["start"], transcipt_dict[i]["start"] + transcipt_dict[i]["duration"]]
+        nested_clean_audio_transcripts.append([transcipt_dict[i]["text"], offsets])
+    return nested_clean_audio_transcripts
 
 """count consecutive integers directly in front of the given value"""
 def how_many_consec_in_front(index_list, val):
@@ -29,10 +54,7 @@ def how_many_consec_in_front(index_list, val):
     if val != index_list[-1]:
         for temp_num in index_list:
             if temp_num == val:
-                print('found value, heres the new list')
-                print(index_list[val_index+1:])
                 for next in index_list[val_index+1:]:
-                    print('next  ', next)
                     if val + 1 == next:
                         in_front += 1
                         val = next
@@ -64,16 +86,17 @@ def find_longest_segments(transcript):
     final_clean = []
     clean_index_lst = []
     # print(type(transcript))
+    line_count = 0
     for cur_speech in transcript:
         clean_speech = []
-        line_count = 0
+
         cur_speech["text"] = cur_speech["text"].replace('\n', ' ').replace('\r', '') # get rid of all new line characters
         non_word = extract_nonwords(cur_speech["text"])
         if non_word == "-1":
             clean_speech.append([cur_speech["text"], line_count])
             clean_index_lst.append(line_count)
         else:
-            print(non_word)
+            pass
         line_count += 1
     return [clean_speech, transcript], clean_index_lst
 
@@ -90,9 +113,28 @@ def download_audio(id):
     url = pack_request(id)
     ytd = YouTube(url)
     audio = ytd.streams.filter(only_audio=True).first()
-    print(audio)
+    # print(audio.title)
     audio.download(save_path)
     return ytd.title
+
+"""Use offsets to take audio chunks from original audio file"""
+def download_audio_chunks(clean_text_and_offsets, title):
+    chunk_num = 0
+    rows = []
+    for chunk in clean_text_and_offsets:
+        temp_path = save_path
+        temp_path = os.path.join(temp_path, title + ".mp4")
+        # print(temp_path)
+        sound = AudioSegment.from_file(temp_path)
+        start = chunk[1][0]
+        end = chunk[1][1]
+        post_fix2 = "\\" + title + " CHUNK" + str(chunk_num) + ".wav"
+        temp_chunk = sound[start:end]
+        temp_chunk.export(chunk_save_path + post_fix2, format="wav")
+        chunk_num += 1
+        rows.append([title, chunk[0], start, end])
+    return rows
+
 
 """add prefix to youtube id"""
 def pack_request(id):
@@ -106,6 +148,4 @@ def retrieve_transcript(id):
     return transcript
 
 
-
-final = how_many_consec_in_front([4, 5, 6, 7, 8, 12, 42], 4)
-print(final)
+main()
