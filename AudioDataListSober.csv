@@ -1,0 +1,192 @@
+Chunk Title,Text,Start Offset,End Offset
+Quick sort in 4 minutes,today we're going to learn quicksort,0.03,5.58
+Quick sort in 4 minutes,like merge sort quicksort is a recursive,2.54,8.429
+Quick sort in 4 minutes,algorithm however when you think of,5.58,10.11
+Quick sort in 4 minutes,quicksort I want you to think of the,8.429,13.17
+Quick sort in 4 minutes,word pivot a pivot is simply one of the,10.11,15.239999999999998
+Quick sort in 4 minutes,items in the array that means the,13.17,17.1
+Quick sort in 4 minutes,following three conditions after we,15.24,20.67
+Quick sort in 4 minutes,sorted it first the pivot is in its,17.1,22.439
+Quick sort in 4 minutes,correct position in the final sorted,20.67,25.26
+Quick sort in 4 minutes,array this means that all items to the,22.439,27.539
+Quick sort in 4 minutes,left are smaller and all items to the,25.26,30.21
+Quick sort in 4 minutes,right are larger let's look at an,27.539,33.54
+Quick sort in 4 minutes,example we're asked to sort the,30.21,36.44
+Quick sort in 4 minutes,following array let's choose a pivot,33.54,39.239
+Quick sort in 4 minutes,I'll explain the best way to do this,36.44,41.25
+Quick sort in 4 minutes,later but for now let's just choose,39.239,45.239
+Quick sort in 4 minutes,three first we move the pivot to the end,41.25,48.980000000000004
+Quick sort in 4 minutes,of the array to get it out of our way,45.239,48.98
+Quick sort in 4 minutes,next we're going to look for two items,50.34,55.17
+Quick sort in 4 minutes,item from left which is the first item,52.58,57.599999999999994
+Quick sort in 4 minutes,starting from the left that is larger,55.17,61.17
+Quick sort in 4 minutes,than our pivot second item from right,57.6,63.39
+Quick sort in 4 minutes,which is the first item starting from,61.17,67.46000000000001
+Quick sort in 4 minutes,the right that is smaller than our pivot,63.39,67.46000000000001
+Quick sort in 4 minutes,starting at two we can see that six is,68.36,74.12
+Quick sort in 4 minutes,item from left,71.25,74.12
+Quick sort in 4 minutes,now starting at the right we see that,75.2,80.71000000000001
+Quick sort in 4 minutes,one is item from right,77.33,80.71
+Quick sort in 4 minutes,let's swap item from left with item from,80.92,86.08
+Quick sort in 4 minutes,right,83.84,86.08
+Quick sort in 4 minutes,we repeat the process this time five is,87.25,93.97
+Quick sort in 4 minutes,item from left and zero is item from,91.66,96.17999999999999
+Quick sort in 4 minutes,right,93.97,96.17999999999999
+Quick sort in 4 minutes,again we swap the two,98.49,102.229
+Quick sort in 4 minutes,one more time this time we see that item,104.939,110.88999999999999
+Quick sort in 4 minutes,from left has a greater index than item,108.43,114.75
+Quick sort in 4 minutes,from right so we know we're done,110.89,114.75
+Quick sort in 4 minutes,we swap item from left with our pivot,117.12,122.22
+Quick sort in 4 minutes,three our pivot is now in its correct,126.87,132.4
+Quick sort in 4 minutes,spot to prove it let's review our three,129.88,136.12
+Quick sort in 4 minutes,conditions as you can see all items to,132.4,138.61
+Quick sort in 4 minutes,the left are smaller and all items to,136.12,142.33
+Quick sort in 4 minutes,the right are larger we said quicksort,138.61,144.31
+Quick sort in 4 minutes,is recursive let's go through the,142.33,146.29000000000002
+Quick sort in 4 minutes,process one more time with the larger,144.31,148.26
+Quick sort in 4 minutes,partition we just made,146.29,151.32999999999998
+Quick sort in 4 minutes,we'll choose 7 as our pivot and move it,148.26,153.69
+Quick sort in 4 minutes,to the end,151.33,153.69000000000003
+Quick sort in 4 minutes,I'll let you watch without voiceover,158.14,162.98999999999998
+Quick sort in 4 minutes,you,166.46,168.52
+Quick sort in 4 minutes,now we have three and seven in their,191.42,196.88899999999998
+Quick sort in 4 minutes,correct positions I think you understand,193.829,199.109
+Quick sort in 4 minutes,the concept so we'll let recursion,196.889,201.709
+Quick sort in 4 minutes,handle the rest,199.109,201.709
+Quick sort in 4 minutes,one important question is how do we,203.51,208.01
+Quick sort in 4 minutes,choose the pivot this makes a large,205.76,209.35999999999999
+Quick sort in 4 minutes,difference in the performance of the,208.01,212.03
+Quick sort in 4 minutes,algorithm as we want to choose a pivot,209.36,214.04000000000002
+Quick sort in 4 minutes,that divides the array in half or as,212.03,217.48
+Quick sort in 4 minutes,close as possible to even out the work,214.04,220.42999999999998
+Quick sort in 4 minutes,one popular method is called meeting of,217.48,222.79899999999998
+Quick sort in 4 minutes,three in this method we look at the,220.43,225.019
+Quick sort in 4 minutes,first middle and last elements of the,222.799,227.24
+Quick sort in 4 minutes,array,225.019,229.86
+Quick sort in 4 minutes,we sort them properly and choose the,227.24,232.89000000000001
+Quick sort in 4 minutes,middle item as our pivot we're making,229.86,234.57000000000002
+Quick sort in 4 minutes,the guess that the middle of these three,232.89,236.82
+Quick sort in 4 minutes,items could be close to the median of,234.57,239.51999999999998
+Quick sort in 4 minutes,the entire array and as you can see it's,236.82,242.67
+Quick sort in 4 minutes,not too far off here's the pseudocode,239.52,245.42000000000002
+Quick sort in 4 minutes,for quicksort,242.67,245.42
+Quick sort in 4 minutes,quicksort has the worst case time,246.72,252.12
+Quick sort in 4 minutes,complexity a Big O of N squared but if a,248.64,254.45999999999998
+Quick sort in 4 minutes,pivot is chosen properly it can be shown,252.12,257.07
+Quick sort in 4 minutes,to have an average case of Big O and log,254.46,261.42
+Quick sort in 4 minutes,N thank you for watching please like and,257.07,264.74
+Quick sort in 4 minutes,subscribe if you enjoyed the video,261.42,264.74
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,we met before you met Susan actually and,0.06,5.7299999999999995
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,I didn't know this until I did read a,2.58,7.62
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,little this week about her I think she,5.73,9.75
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,was valedictorian of her high school I,7.62,11.780000000000001
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,didn't know that she was this structured,9.75,14.389
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,incredibly organized person who had no,11.78,18.48
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,experience or or history with any kind,14.389,19.89
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,of addiction or anything like this,18.48,22.47
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,and I'd also didn't know she darned you,19.89,25.71
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,down twice I know and I guess if I had,22.47,27.108999999999998
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,one question to ask about her it was,25.71,30.929000000000002
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,what does she see in you know what what,27.109,34.92
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,were you drawn to about her because so,30.929,36.96
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,many of your choices previous to her,34.92,40.7
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,we're not self empowering 100 percent,36.96,43.17
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,they were self destructive yeah well I,40.7,44.85
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,was talking to my shrink on the ride,43.17,48.75
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,down here today and as usual the topic,44.85,50.43
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,of the day is the topic it always is,48.75,52.86
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,which is we don't really know what we're,50.43,55.11
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,doing when we're doing it and if we get,52.86,57.809
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,comfortable with that then we're going,55.11,61.98
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,to be less shocked by the awful results,57.809,65.939
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,yeah you know so I here's all I'll say,61.98,68.57
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,you want to talk about validation and,65.939,71.52
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,mentors and and people who have been,68.57,74.46
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,with me at critical times I mentioned,71.52,77.88
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,some male directors all of them together,74.46,81.479
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,could not hold the candle to the power,77.88,84.42
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,of partnership when you find somebody,81.479,87.27
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,who without meaning to you just kind of,84.42,90.06
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,get each other and then you kind of you,87.27,92.82
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,cash you cash in all your chips and you,90.06,95.49000000000001
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,say we're going to do this difficult,92.82,97.5
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,thing which is called relationship,95.49,99.08999999999999
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,building and being in the same industry,97.5,101.82
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,and all that stuff but it's this thing,99.09,104.46000000000001
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,of it's the greatest mystery in life you,101.82,106.19999999999999
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,know and I've had previous,104.46,108.44999999999999
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,administrations and between the two of,106.2,110.72
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,us there's been this creative engine of,108.45,113.85000000000001
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,dialog and discussion and for me just,110.72,116.31
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,self-betterment because she's the only,113.85,119.759
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,person in my entire life and career who,116.31,123.479
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,I can nail it on a take and I look over,119.759,126.95
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,at the modern she's there just like,123.479,126.95
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,you had whatever you know it's not that,127.39,135.4
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,she doesn't give me validation it's that,132.58,137.77
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,she does not do what everyone else has,135.4,140.59
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,always done which just thought I need to,137.77,142.3
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,be taken care of I need to be validated,140.59,145.78
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,I need to be compensated for and into,142.3,147.55
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,this and that she just she doesn't treat,145.78,148.42
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,you like a child,147.55,153.04000000000002
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,correct and acting like one I just get,148.42,158.17
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,the sense that you when you found her,153.04,162.54999999999998
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,you found something that that for the,158.17,165.1
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,first time was worth more than all of,162.55,166.78
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,you in the early in this conversation,165.1,171.1
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,you described how sexy it was to go to,166.78,174.04
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,the dark side oh yeah and I think she,171.1,176.82999999999998
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,was probably if I'm I'm projecting but,174.04,179.85999999999999
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,I'm asking you if this true sexy also,176.83,182.38000000000002
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,very sexy but the first person that,179.86,184.48000000000002
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,could overwhelm that sexy darkness and,182.38,186.97
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,yeah like is it valid to say that she,184.48,190.32999999999998
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,kind of saved your life in some ways,186.97,192.73
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,well here's the great thing really any,190.33,195.13000000000002
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,great partner holds their space and lets,192.73,198.39999999999998
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,you fish yourself out of the chasm with,195.13,201.82
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,a kind of benevolent neglect which is,198.4,206.29
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,saying I can't do this work for you,201.82,208.75
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,because it doesn't work if I take credit,206.29,211.239
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,for it now you might be right,208.75,213.37
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,I might I might have been dead as a,211.239,215.29
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,doornail in Ojai if I hadn't met her who,213.37,218.019
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,knows but again what's really cool to me,215.29,220.66
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,and I strive to be this and my work and,218.019,222.79
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,my my personal life I try to be this as,220.66,225.91
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,a dad without being rigid I try to just,222.79,229.92999999999998
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,hold my space so that it's something,225.91,232.12
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,that is consistent enough for someone,229.93,235.87
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,else to rely on and have a deep abiding,232.12,240.67000000000002
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,trust in if I'm completely trustworthy,235.87,244.15
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,if my word is bond and if I suit up and,240.67,246.22
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,show up no matter what and you can count,244.15,248.35
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,on me that gives the other so much,246.22,250.329
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,freedom because they're not having to,248.35,253.39
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,entangle with my inconsistency or my,250.329,257.14
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,neuroses or my need you know here's what,253.39,258.849
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,I'll say this is this is it this is,257.14,259.39
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,definitive,258.849,260.739
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,if anything,259.39,264.4
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,movie saved my life because she saw me,260.739,268.84
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,in weird science and at the time I had a,264.4,270.52
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,space between my teeth and she had a,268.84,272.44
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,space between her teeth we're on it both,270.52,273.58
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,getting him filled in because that's,272.44,275.53
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,just what you did in the late 80s and,273.58,277.50899999999996
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,but she looked at me in weird science,275.53,279.099
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,her first thought of me was like oh my,277.509,281.56
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,god he's like me he has a space between,279.099,283.77
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,his teeth it's okay that I have a space,281.56,287.259
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,really yes when she was what 13 or,283.77,292.19899999999996
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,something yes which is even the greatest,287.259,292.199
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,hey folks thanks for watching if you,292.409,297.099
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,like what you just saw then why not,295.33,299.74
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,subscribe click right here for lots more,297.099,302.65
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,off camera and if you want to see the,299.74,304.539
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,hour-long version of these conversations,302.65,306.38899999999995
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,I'm going to give you the secret link,304.539,307.81
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,here it is,306.389,311.62
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,off camera comm check it out,307.81,315.009
+Robert Downey Jr Finds More than Validation from His Wife Susan Downey,[Music],311.62,315.009

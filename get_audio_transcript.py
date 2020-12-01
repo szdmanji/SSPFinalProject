@@ -5,18 +5,20 @@ from pathlib import Path
 import os
 import sys
 import csv
+import re
 
 save_path = r"C:\Users\iannb\OneDrive\Documents\BC Senior Year_\Speech Sig\SSPFinalProject\audio_files"
-chunk_save_path =  r"C:\Users\iannb\OneDrive\Documents\BC Senior Year_\Speech Sig\SSPFinalProject\chunked_audio_files_drunk"
+chunk_save_path =  r"C:\Users\iannb\OneDrive\Documents\BC Senior Year_\Speech Sig\SSPFinalProject\chunked_audio_files_sober"
 gradual_inebriation = ["DkhFw4B_OvQ", "aEEv5xFMdCA"]
 all_inebriated = ["woDiIAQBCM4", "yJJRVleE3_Q", "FbmnrDl-dUQ", "Xn0moClwDuM"]
-sober = ["5uwgV-l-udU", "KAJkdIdz8hE"]
-csvname = "AudioDataListDrunk.csv"
+# sober = ["Hoixgm4-P4M", "1yVMU93nmv8"]
+sober = ["Hoixgm4-P4M", "g6NsBQBjpDw"]
+csvname = "AudioDataListSober.csv"
 
 
 
 def main():
-    video_list = all_inebriated
+    video_list = sober
     all_rows = []
     fields = ['Chunk Title', 'Text', 'Start Offset', 'End Offset']
     for id in video_list:
@@ -116,13 +118,20 @@ def download_audio(id):
     ytd = YouTube(url)
     audio = ytd.streams.filter(only_audio=True).first()
     # print(audio.title)
-    audio.download(save_path)
-    return ytd.title
+    out_file = audio.download(save_path)
+    title = ytd.title
+    # new_name = title[:15]
+    # os.rename(out_file, new_name)
+    # print('title ', title)
+    return title
 
 """Use offsets to take audio chunks from original audio file"""
 def download_audio_chunks(clean_text_and_offsets, title):
     chunk_num = 0
     rows = []
+    # title = title.replace('|', '').replace(',', '').replace(':', '')
+    # title = re.sub(' +', ' ', title)
+    # print('title ', title)
     for chunk in clean_text_and_offsets:
         temp_path = save_path
         temp_path = os.path.join(temp_path, title + ".mp4")
