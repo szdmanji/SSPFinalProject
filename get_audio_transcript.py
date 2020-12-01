@@ -7,14 +7,16 @@ import sys
 import csv
 
 save_path = r"C:\Users\iannb\OneDrive\Documents\BC Senior Year_\Speech Sig\SSPFinalProject\audio_files"
-chunk_save_path =  r"C:\Users\iannb\OneDrive\Documents\BC Senior Year_\Speech Sig\SSPFinalProject\chunked_audio_files"
-gradual_inebriation = ["uo3AXTIPqpg"]
-video_list = ["woDiIAQBCM4", "rQ63wo4XcDs", "yJJRVleE3_Q"]
-csvname = "AudioDataList.csv"
+chunk_save_path =  r"C:\Users\iannb\OneDrive\Documents\BC Senior Year_\Speech Sig\SSPFinalProject\chunked_audio_files_drunk"
+gradual_inebriation = ["DkhFw4B_OvQ", "aEEv5xFMdCA"]
+all_inebriated = ["woDiIAQBCM4", "yJJRVleE3_Q", "FbmnrDl-dUQ", "Xn0moClwDuM"]
+sober = ["5uwgV-l-udU", "KAJkdIdz8hE"]
+csvname = "AudioDataListDrunk.csv"
 
 
 
 def main():
+    video_list = all_inebriated
     all_rows = []
     fields = ['Chunk Title', 'Text', 'Start Offset', 'End Offset']
     for id in video_list:
@@ -134,7 +136,6 @@ def download_audio_chunks(clean_text_and_offsets, title):
         chunk_num += 1
         rows.append([title, chunk[0], start, end])
     return rows
-
 
 """add prefix to youtube id"""
 def pack_request(id):
