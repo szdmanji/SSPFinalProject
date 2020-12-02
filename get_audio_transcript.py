@@ -8,21 +8,23 @@ import csv
 import re
 
 save_path = r"C:\Users\iannb\OneDrive\Documents\BC Senior Year_\Speech Sig\SSPFinalProject\audio_files"
-chunk_save_path =  r"C:\Users\iannb\OneDrive\Documents\BC Senior Year_\Speech Sig\SSPFinalProject\chunked_audio_files_sober"
+chunk_save_path =  r"C:\Users\iannb\OneDrive\Documents\BC Senior Year_\Speech Sig\SSPFinalProject\chunked_audio_files_drunk"
 gradual_inebriation = ["DkhFw4B_OvQ", "aEEv5xFMdCA"]
 all_inebriated = ["woDiIAQBCM4", "yJJRVleE3_Q", "FbmnrDl-dUQ", "Xn0moClwDuM"]
-# sober = ["Hoixgm4-P4M", "1yVMU93nmv8"]
 sober = ["Hoixgm4-P4M", "g6NsBQBjpDw"]
-csvname = "AudioDataListSober.csv"
+# sober = ["Hoixgm4-P4M"]
+csvname = "AudioDataListDrunk.csv"
 
 
 
 def main():
-    video_list = sober
+    video_list = all_inebriated
     all_rows = []
     fields = ['Chunk Title', 'Text', 'Start Offset', 'End Offset']
     for id in video_list:
+        print('vid id \n', id)
         temp_transcript = retrieve_transcript(id)
+        # print("temp_transcript \n ", temp_transcript)
         nested_transcript_dict, clean_indices = find_longest_segments(temp_transcript)
         nested_transcript_dict = nested_transcript_dict[1]
         # clean_audio_zip = concat_clean_audio(temp_transcript, clean_indices)
@@ -30,10 +32,10 @@ def main():
         title = download_audio(id)
         rows = download_audio_chunks(clean_text_and_offsets, title)
         all_rows.extend(rows)
-
         print("Pulled " + str(len(nested_transcript_dict)) + " audio chunks from the video titled: " + title)
 
     with open(csvname, 'w') as csvfile:
+        print("what's going on")
         # creating a csv writer object
         csvwriter = csv.writer(csvfile)
 
@@ -136,14 +138,16 @@ def download_audio_chunks(clean_text_and_offsets, title):
         temp_path = save_path
         temp_path = os.path.join(temp_path, title + ".mp4")
         # print(temp_path)
-        sound = AudioSegment.from_file(temp_path)
+        sound = AudioSegment.from_file(temp_path, "mp4")
         start = chunk[1][0]
+        # print('start \n',start)
         end = chunk[1][1]
+        # print('end \n',end)
         post_fix2 = "\\" + title + " CHUNK" + str(chunk_num) + ".wav"
-        temp_chunk = sound[start:end]
+        temp_chunk = sound[start*1000:end * 1000]
         temp_chunk.export(chunk_save_path + post_fix2, format="wav")
         chunk_num += 1
-        rows.append([title, chunk[0], start, end])
+        rows.append([title + " CHUNK" + str(chunk_num), chunk[0], start, end])
     return rows
 
 """add prefix to youtube id"""
