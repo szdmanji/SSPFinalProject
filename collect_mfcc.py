@@ -11,13 +11,13 @@ for i in range(1, 21):
     header += f' mfcc{i}'
 header += f' label'
 
-file = open('mfcc_data.csv', 'w', newline='')
+file = open('mfcc_data_sober.csv', 'w', newline='')
 with file:
     writer = csv.writer(file)
     writer.writerow(header.split())
 
 
-for wav_file in glob.glob(r".\chunked_audio_files_drunk\*.wav"):
+for wav_file in glob.glob(r".\chunked_audio_files_sober\*.wav"):
     label = 0
     y, sr = librosa.load(wav_file)
 
@@ -36,7 +36,7 @@ for wav_file in glob.glob(r".\chunked_audio_files_drunk\*.wav"):
         allData += f' {np.mean(number)}'
 
     allData += f' {label}'
-    file = open('mfcc_data.csv', 'a', newline='')
+    file = open('mfcc_data_sober.csv', 'a', newline='')
     with file:
         writer = csv.writer(file)
         writer.writerow(allData.split())
