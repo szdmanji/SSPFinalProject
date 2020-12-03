@@ -47,7 +47,7 @@ with file:
 
 #get data
 for wav_file in glob.glob(r"./chunked_audio_files_sober/*.wav"):
-    label = 1
+    label = 0
     sound = parselmouth.Sound(wav_file)
     pitch = call(sound, "To Pitch", 0, 75, 600)
     meanpitch = call(pitch, "Get mean", 0, 0, "Hertz")
