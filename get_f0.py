@@ -40,32 +40,31 @@ for wav_file in glob.glob(r".\chunked_audio_files_drunk\*.wav"):
 
 header = 'filename f0 label'
 
-file = open('f0_data_sober.csv', 'w', newline='')
+file = open('f0_data_drunk.csv', 'w', newline='')
 with file:
     writer = csv.writer(file)
     writer.writerow(header.split())
 
 #get sober data
-for wav_file in glob.glob(r".\chunked_audio_files_sober\*.wav"):
-    print(wav_file)
-    label = 0
+for wav_file in glob.glob(r"./chunked_audio_files_drunk/*.wav"):
+    label = 1
     sound = parselmouth.Sound(wav_file)
     pitch = call(sound, "To Pitch", 0, 75, 600)
     meanpitch = call(pitch, "Get mean", 0, 0, "Hertz")
-    intensity = call(sound, "To Intensity", 75, 0, "yes")
-    meanintensity = call(intensity, "Get mean", 0, 0, "energy")
-    duration = call(sound, "Get total duration")
+    #intensity = call(sound, "To Intensity", 75, 0, "yes")
+    #meanintensity = call(intensity, "Get mean", 0, 0, "energy")
+    #duration = call(sound, "Get total duration")
     thePitch = f'{wav_file} {meanpitch}'
-    print(meanpitch)
 
 
-    formant = call(sound, "To Formant (burg)", 0, 5, 5500, 0.025, 50)
 
-    sober_f0.append(meanpitch)
+    #formant = call(sound, "To Formant (burg)", 0, 5, 5500, 0.025, 50)
+
+    drunk_f0.append(meanpitch)
     thePitch += f' {label}'
-    file = open('f0_data_sober.csv', 'a', newline='')
+    file = open('f0_data_drunk.csv', 'a', newline='')
     with file:
         writer = csv.writer(file)
         writer.writerow(thePitch.split())
 
-print(sober_f0)
+
