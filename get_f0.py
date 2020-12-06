@@ -9,7 +9,8 @@ import os
 
 drunk_f0 = []
 sober_f0 = []
-
+shimmer = []
+jitter = []
 
 '''manipulation = call(sound, "To Manipulation", 0.01, 75, 600)
 pitch_tier = call(manipulation, "Extract pitch tier")
@@ -38,7 +39,7 @@ for wav_file in glob.glob(r".\chunked_audio_files_drunk\*.wav"):
     drunk_f0.append(meanpitch)
 '''
 
-header = 'filename f0 label'
+header = 'filename f0 shimmer label'
 
 file = open('f0_data_sober.csv', 'w', newline='')
 with file:
@@ -51,20 +52,29 @@ for wav_file in glob.glob(r"./chunked_audio_files_sober/*.wav"):
     sound = parselmouth.Sound(wav_file)
     pitch = call(sound, "To Pitch", 0, 75, 600)
     meanpitch = call(pitch, "Get mean", 0, 0, "Hertz")
+
+
+
+    pointProcess = call([sound,pitch], "To PointProcess (periodic, cc)", 75, 600)
+    shimmer_local = call([sound, pointProcess], "Get shimmer (local)...", 0.0, 0.0, 0.0001, 0.02, 1.3, 1.6)
+
+
     #intensity = call(sound, "To Intensity", 75, 0, "yes")
     #meanintensity = call(intensity, "Get mean", 0, 0, "energy")
     #duration = call(sound, "Get total duration")
-    thePitch = f'{wav_file} {meanpitch}'
+
+    theData = f'{wav_file} {meanpitch} {shimmer_local}'
 
 
 
     #formant = call(sound, "To Formant (burg)", 0, 5, 5500, 0.025, 50)
 
     sober_f0.append(meanpitch)
-    thePitch += f' {label}'
+    shimmer.append(shimmer_local)
+    theData += f' {label}'
     file = open('f0_data_sober.csv', 'a', newline='')
     with file:
         writer = csv.writer(file)
-        writer.writerow(thePitch.split())
+        writer.writerow(theData.split())
 
 
