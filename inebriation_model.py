@@ -30,3 +30,26 @@ def make_predictions(data):
     y = data.iloc[:, -1]
     encoder = LabelEncoder()
     y = encoder.fit_transform(y)
+    accuracy = 0
+
+for i in range(10):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+    y_train = to_categorical(y_train)
+    y_test = to_categorical(y_test)
+
+    model = Sequential()
+    model.add(Dense(256, activation='relu', input_shape=(X_train.shape[1],)))
+    model.add(Dense(128, activation='relu'))
+    model.add(Dense(64, activation='relu'))
+    model.add(Dense(2, activation='softmax'))
+    
+    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
+    history = model.fit(X_train, y_train, epochs=50, batch_size=120)
+    test_loss, test_acc = model.evaluate(X_test,y_test)
+    accuracy += test_acc
+
+    print(accuracy / 10)
+
+    predictions = model.predict(X_test)
+    np.argmax(predictions[0])
