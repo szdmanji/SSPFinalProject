@@ -20,7 +20,7 @@ from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 from sklearn.neighbors import KNeighborsClassifier
 from matplotlib import pyplot as plt
 fName = 'chunked_audio_files_sober/*.wav'
-path = '/Users/ramzibishtawi/Documents/CSCI-3398/SSPFinalProject'
+path = '/Users/ShahzadManji/Desktop/CSCI3398 NLP/SSPFinalProject'
 
 fileNameOnly = generalUtility.getFileNameOnly(fName)
 script = ''
@@ -29,7 +29,7 @@ script += 'do ("To Formant (burg)...", 0, 5, 5000, 0.025, 50)\n'
 script += 'do ("Save as short text file...", "' + path + fileNameOnly \
     + '.Formant")\n'
 elapsed = praatUtil.runPraatScript(script)
-print "Praat script executed in " + str(elapsed) + " seconds."
+print ("Praat script executed in " + str(elapsed) + " seconds.")
 # read the generated Praat formants file
 formants = praatUtil.PraatFormants()
 formants.readFile(fileNameOnly + '.Formant')        
@@ -95,7 +95,7 @@ graph = matplotlibUtil.CGraph(width = 6, height = 6)
 graph.createFigure()
 ax = graph.getArrAx()[0]
 for vowel in arrGraphData:
-    print vowel, len(arrGraphData[vowel]['f1'])
+    print (vowel, len(arrGraphData[vowel]['f1']))
     ax.plot(arrGraphData[vowel]['f1'], arrGraphData[vowel]['f2'], 'o', \
         markersize = 5, alpha = 0.4, label=vowel)
 ax.grid()
