@@ -5,7 +5,7 @@ import csv
 
 header = 'filename f1 f2 f1/f2_ratio'
 
-file = open('test_formants_drunk.csv', 'w', newline='')
+file = open('fratio_drunk.csv', 'w', newline='')
 with file:
     writer = csv.writer(file)
     writer.writerow(header.split())
@@ -32,7 +32,7 @@ for wav_file in glob.glob(r"./chunked_audio_files_drunk/*.wav"):
     theData = f'{wav_file} {f1} {f2} {fratio}'
     theData += f' {label}'
 
-    file = open('test_formants_drunk.csv', 'a', newline='')
+    file = open('fratio_drunk.csv', 'a', newline='')
     with file:
         writer = csv.writer(file)
         writer.writerow(theData.split())
