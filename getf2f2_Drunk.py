@@ -15,9 +15,9 @@ def getFeatures(wav_file):
     sound = parselmouth.Sound(wav_file)
 
     formant = call(sound, "To Formant (burg)", 0, 5, 5500, 0.025, 50)
-    tg_file = re.sub("wav", "TextGrid", wav_file)
-    textgrid = call("Read from file", tg_file)
-    intv = call(textgrid, "Get number of intervals", 1)
+    # tg_file = re.sub("wav", "TextGrid", wav_file)
+    # textgrid = call("Read from file", tg_file)
+    # intv = call(textgrid, "Get number of intervals", 1)
 
     vowels = 0
     f1_vowels = 0
