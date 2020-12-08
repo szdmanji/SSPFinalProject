@@ -1,21 +1,13 @@
 import glob, re, os, numpy as np
 import parselmouth, matplotlib.pyplot as plt
+import csv
 from os.path import join
 from collections import Counter
 from parselmouth.praat import call
-from sklearn import metrics
-from sklearn.model_selection import cross_validate
-from sklearn.naive_bayes import GaussianNB
-from sklearn.svm import LinearSVC
-from sklearn.neural_network import MLPClassifier
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import AdaBoostClassifier
-from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
-from sklearn.neighbors import KNeighborsClassifier
 
-FILEPATH = '/Users/ramzibishtawi/Documents/CSCI-3398/SSPFinalProject'
+
+
+# FILEPATH = '/Users/ramzibishtawi/Documents/CSCI-3398/SSPFinalProject'
 
 # function to get features for a .wav file
 def getFeatures(wav_file):
@@ -26,7 +18,7 @@ def getFeatures(wav_file):
     tg_file = re.sub("wav", "TextGrid", wav_file)
     textgrid = call("Read from file", tg_file)
     intv = call(textgrid, "Get number of intervals", 1)
-    
+
     vowels = 0
     f1_vowels = 0
     f2_vowels = 0
@@ -45,34 +37,52 @@ def getFeatures(wav_file):
             f1_vowels += call(formant, "Get value at time", 1, midpoint, "Hertz", "Linear")
             f2_vowels += call(formant, "Get value at time", 2, midpoint, "Hertz", "Linear")
 
-    
+
     f1_vowels = f1_vowels / vowels if vowels > 0 else 0
     f2_vowels = f2_vowels / vowels if vowels > 0 else 0
+    fratio = f1_vowels / f2_vowels
 
     results = [
                 f1_vowels,
                 f2_vowels,
+                fratio
             ]
-   
+
     return results
 
-### GET Drunk DATA
+### GET DRUNK DATA
 
-# list to store Drunk features
+# list to store drunk features
 drunk = []
-counter = 0 
+counter = 0
 
+header = 'filename f1/f2 label'
+
+file = open('f1_f2_data_drunk.csv', 'w', newline='')
+with file:
+    writer = csv.writer(file)
+    writer.writerow(header.split())
 # for each .wav file
-for wav_file in glob.glob(join(FILEPATH, "\chunked_audio_files_drunk/*.wav")):
-    
+print(1)
+for wav_file in glob.glob(r"./chunked_audio_files_drunk/*.wav"):
+    print(1)
+    label = 0
     # print progress
     counter += 1
     if counter % 100 == 0:
         print(counter, wav_file)
-    
+
     # get features
     results = getFeatures(wav_file)
-    # append all the features to the drunk data 
+    # append all the features to the drunk data
     drunk.append(results)
 
 
+
+
+    theData = f'{wav_file} {results}'
+    theData += f' {label}'
+    file = open('f1/f2_data_drunk.csv', 'a', newline='')
+    with file:
+        writer = csv.writer(file)
+        writer.writerow(theData.split())
